@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Covid19 case tracker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="display-4">Coronavirus Tracker application</h1>
+		<p>This application lists the current number of cases reported
+			across the globe
+		<p>
+		<div class="jumbotron">
+
+			
+			<h1 class="display-4" th:text="${totalcount}"></h1>
+			<p class="lead">Total cases reported around globe as of today</p>
+
+			<hr class="my-4">
+			<p>
+				<span>Total new cases reported around globe today :</span> <span
+					th:text="${newcount}"></span>
+			</p>
+			
+			<hr class="my-4">
+			<p>
+				<span>Total new cases reported today in India:</span> <span
+					th:text="${newcountIndia}"></span>
+			</p>
+		</div>
+
+
+		<table class="table table-striped table-hover">
+			<tr>
+			<th>COUNTRY</th>
+				<th>STATE</th>
+				
+
+				<th>TOTAL CASES</th>
+			</tr>
+			<tr th:each="case : ${data}">
+			<td th:text="${case.country}"></td>
+				<td th:text="${case.state}"></td>
+				
+
+				<td th:text="${case.latestCases}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

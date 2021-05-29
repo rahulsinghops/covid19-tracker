@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -123,4 +128,22 @@ public class CovidDataService {
 
 		return covidlist;
 	}
+	
+	
+	
+	/*
+	 * //pagination public Page<CovidStats> findPaginated(Pageable
+	 * pageable,List<CovidStats> cases) { int pageSize = pageable.getPageSize(); int
+	 * currentPage = pageable.getPageNumber(); int startItem = currentPage *
+	 * pageSize; List<CovidStats> list;
+	 * 
+	 * if (cases.size() < startItem) { list = Collections.emptyList(); } else { int
+	 * toIndex = Math.min(startItem + pageSize, cases.size()); list =
+	 * cases.subList(startItem, toIndex); }
+	 * 
+	 * Page<CovidStats> bookPage = new PageImpl<CovidStats>(list,
+	 * PageRequest.of(currentPage, pageSize), cases.size());
+	 * 
+	 * return bookPage; }
+	 */
 }

@@ -2,20 +2,14 @@ package com.singhrepo.covid19tracker.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,7 +81,7 @@ public class CovidStatsService {
 	public ModelAndView getSearchData(@RequestParam("cname") String country) {
 	log.info("getSearchData executed with input :" + country);
 	
-	  if (country.equals("") || country == null) { getData(); }
+	  if (country.equals("") || country == null || country.equals("Choose...")) {return getData(); }
 		 /* * pagination getData(new optio,0); }---changed due to
 	 */
 
